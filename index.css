@@ -1,0 +1,241 @@
+/*
+    ** IMPORTANT NOTE **
+
+    Styles do not have to match the provided solution exactly - try to get it as close as possible, paying attention to the requirements noted below.
+*/
+
+/*
+    Begin by creating five variables representing BCIT's brand colors
+
+    The variables can be named whatever you like, but the values must be:
+        #003c71                     (dark blue)
+        #296cf6                     (blue)
+        rgb(0 37 85 / 0.8)          (transparent blue)
+        #ffffff                     (white)
+        #fff400                     (yellow)
+
+    * NOTE: anywhere a color is required in your rules below, you MUST use the CSS variable - no hard-coded colors are allowed
+*/
+
+/*
+    HEADER STYLES
+    -------------
+    The header must: 
+        - be positioned such that it does not scroll with the page, and appears in front of all other content
+        - extend all the way from the left edge of the viewport to the right edge of the viewport
+        - have a white background
+
+    The div with class 'menubar' must:
+        - have a dark blue background
+    
+    The list items inside the div with class 'menubar' must:
+        - have white text
+        - have a dark blue background
+        - have bold font weight
+        - must transition to dark blue text over a yellow background when hovered over
+
+    All elements inside the div with class 'header' must be stacked horizontally across the page
+
+    The h1 with class logo must be 64px wide and 54px tall 
+
+    The list items inside the div with class 'header' must:
+        - have dark blue text
+        - have bold font weight
+        - have no underline (normally OR when hovered over)
+        - must transition to blue text with a 2px solid yellow bottom border when hovered over
+            * TIP: to avoid the position of the element "jumping" when hovering over, apply a default
+             bottom border of 2px solid transparent
+*/
+
+/*
+    BIG INFO STYLES
+    ---------------
+    The section with id 'big-info' must:
+        - be 800px tall
+        - use the bcit-big-info.png image located inside the images folder as its background 
+
+    The div with class 'overlay' must:
+        - be positioned absolutely INSIDE the #big-info section (i.e. any values of top, right, bottom, and left must be relative to the #big-info element)
+        
+    All elements inside the div with class 'overlay' must: 
+        - have white text
+        - have appropriate font size and weight
+
+    The button element inside the div with class 'overlay' must:
+        - have a 1px solid white border
+        - have appropriate padding on the top, right, bottom, and left sides
+        - transition to a transparent blue background on hover
+*/
+
+/*
+    WELCOME STYLES
+    --------------
+
+    The h1 inside the section with id 'welcome' must:
+        - have dark blue text
+        - have appropriate font size and weight
+        - be placed sufficiently far enough away from the top and left edges of the section
+*/
+
+header {
+    position: fixed;
+    z-index: 10;
+}
+
+.overlay {
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+/* my styles start from */
+
+:root {
+    --dark-blue: #003c71;
+    --blue: #296cf6;
+    --transparent-blue: rgba(0, 37, 85, 0.8);
+    --white: #ffffff;
+    --yellow: #fff400;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0 ;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--white);
+}
+
+.menubar {
+    background-color: var(--dark-blue);
+    display:flex;
+    justify-content: flex-end; 
+    padding: 10px;
+
+}
+
+.menubar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+}
+
+.menubar ul li {
+    color: var(--white);
+    background-color: var(--dark-blue);
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.menubar ul li:hover {
+    color: var(--dark-blue);
+    background-color: var(--yellow);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  
+    padding: 5px 25px;
+}
+
+.header nav {
+    margin-left: 20px ;
+    display: flex ;
+}
+
+
+.header.logo {
+    margin-right:0;
+}
+
+
+.logo img {
+    width: 80px;
+    height: 70px;
+}
+
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header ul li {
+    font-weight: bold;
+    color: var(--dark-blue);
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.header ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header ul li:hover {
+    color: var(--blue);
+    border-bottom: 2px solid var(--yellow);
+}
+
+
+#big-info {
+    height: 800px;
+    background-image: url('images/bcit-big-info.png');
+    background-size: cover;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 70%;
+    left: 33%; 
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: var(--white);
+}
+
+.overlay h1 {
+    font-size: 50px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+}
+
+.overlay p {
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+.overlay button {
+    padding: 20px 30px;
+    border: 1px solid var(--white);
+    background-color: transparent;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px ;
+    
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.overlay button:hover {
+    background-color: var(--transparent-blue);
+}
+
+
+#welcome h1 {
+    color: var(--dark-blue);
+    font-size: 32px;
+    font-weight: bold;
+    margin: 50px 20px;
+}
+
+
+
